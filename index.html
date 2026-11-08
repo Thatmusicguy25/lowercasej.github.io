@@ -1,82 +1,40 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jared reed — lowercase j</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        obsidian: '#070709',
-                        charcoal: '#0d0d11',
-                        graphite: '#141419',
-                        slate: '#84848e',
-                        bone: '#e4e4e9',
-                        amethyst: '#a855f7'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace']
-                    }
-                }
-            }
-        }
-    </script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400&family=Inter:wght@300&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after {
-            text-transform: lowercase !important;
-        }
-        body {
-            background-color: #070709;
-            color: #e4e4e9;
-            font-family: 'Inter', sans-serif;
-        }
-        .ambient-glow {
-            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 20%), rgba(168, 85, 247, 0.055), transparent 70%);
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none;
-        }
+        * { text-transform: lowercase !important; }
+        body { background-color: #070709; color: #e4e4e9; font-family: 'Inter', sans-serif; }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
     </style>
 </head>
-<body class="bg-obsidian selection:bg-amethyst/20">
-    <div class="ambient-glow"></div>
-    
-    <nav class="fixed top-0 w-full z-50 px-6 py-8 flex justify-between items-center mix-blend-difference">
-        <a href="#" class="font-display text-xl tracking-tighter">lowercase j</a>
+<body class="p-8 md:p-24">
+    <nav class="mb-32">
+        <a href="/" class="font-display text-xl tracking-tighter">lowercase j</a>
     </nav>
+    
+    <header class="max-w-2xl mb-32">
+        <h1 class="text-5xl font-display font-light mb-8 tracking-tight">jared reed</h1>
+        <p class="text-gray-400 text-xl leading-relaxed">
+            idiosyncratic sonic architecture for the modern studio. compositional. eye candy for the cinematic ear.
+        </p>
+    </header>
 
-    <main class="relative pt-32 px-6 max-w-5xl mx-auto">
-        <header class="mb-24">
-            <h1 class="text-6xl font-display font-light mb-6 tracking-tight">jared reed</h1>
-            <p class="text-slate text-lg max-w-xl">idiosyncratic sonic architecture for the modern studio. compositional. eye candy for the cinematic ear</p>
-        </header>
-
-        <!-- Portfolio Items -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div class="group cursor-pointer border-t border-white/10 pt-8 hover:border-amethyst/50 transition-colors">
-                <span class="text-xs font-mono text-amethyst mb-4 block">01 / ether</span>
-                <h3 class="text-2xl font-display mb-2">ether</h3>
-                <p class="text-slate text-sm">ambient soundscape generator</p>
-            </div>
-            <!-- Repeat for other items -->
-        </section>
-    </main>
-
-    <script>
-        document.addEventListener('mousemove', e => {
-            const x = (e.clientX / window.innerWidth) * 100;
-            const y = (e.clientY / window.innerHeight) * 100;
-            document.documentElement.style.setProperty('--mouse-x', `${x}%`);
-            document.documentElement.style.setProperty('--mouse-y', `${y}%`);
-        });
-    </script>
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-16 border-t border-white/10 pt-16">
+        <div>
+            <span class="text-purple-500 font-mono text-xs mb-4 block">01 / project</span>
+            <h2 class="text-2xl font-display mb-2">ether</h2>
+            <p class="text-gray-500 text-sm">ambient soundscape generator</p>
+        </div>
+        <div>
+            <span class="text-amber-500 font-mono text-xs mb-4 block">02 / project</span>
+            <h2 class="text-2xl font-display mb-2">sonic blueprint</h2>
+            <p class="text-gray-500 text-sm">compositional toolset</p>
+        </div>
+    </section>
 </body>
 </html>
