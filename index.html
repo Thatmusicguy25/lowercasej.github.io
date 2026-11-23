@@ -502,6 +502,9 @@
                     <div class="aspect-video w-full max-w-4xl mx-auto rounded border hairline-border overflow-hidden bg-obsidian">
                         <iframe class="w-full h-full" src="https://www.youtube.com/embed/PclxFzFaehY" title="obsidian modal study i" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
+                    <p class="mt-2 text-[9px] leading-relaxed text-slate/70 font-mono">
+                        video: public domain · score composition: Jared Reed · master recording license: Jared Reed
+                    </p>
                 </div>
                 
                 <div onclick="playBlueprint('bp-02')" class="group py-6 px-3 sm:px-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-charcoal/50 transition-colors">
@@ -961,6 +964,7 @@
                 profile: 'acoustic foundation / experimental synthesis',
                 duration: '03:42',
                 embedUrl: 'https://www.youtube.com/embed/PclxFzFaehY',
+                credits: 'video: public domain · score composition: Jared Reed · master recording license: Jared Reed',
                 freqs: [146.83, 220.00, 261.63, 329.63] // D Dorian voicing
             },
             {
@@ -1058,6 +1062,7 @@
                         <div class="aspect-video w-full max-w-4xl mx-auto rounded border hairline-border overflow-hidden bg-obsidian">
                             <iframe class="w-full h-full" src="${item.embedUrl}" title="${item.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                         </div>
+                        <p class="mt-2 text-[9px] leading-relaxed text-slate/70 font-mono">${item.credits}</p>
                     </div>`;
                 }
                 if (item.audioUrl) {
