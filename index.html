@@ -1055,6 +1055,21 @@
                         </div>
                     </div>`;
                 }
+                if (item.audioUrl) {
+                    return `
+                    <div class="py-6 px-3 sm:px-4">
+                        <div class="flex items-start sm:items-center gap-4 mb-5">
+                            <span class="font-mono text-xs ${isPlaying ? 'text-emerald' : 'text-slate'} pt-1 sm:pt-0">${isPlaying ? '&#9654;' : item.index}</span>
+                            <div>
+                                <h3 class="font-display text-base sm:text-lg ${isPlaying ? 'text-emerald' : 'text-bone'} font-normal">${item.title}</h3>
+                                <p class="font-mono text-[11px] text-slate mt-0.5">
+                                    ${item.role} &middot; <span class="text-slate/70">${item.profile}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <audio class="w-full max-w-4xl mx-auto" controls preload="metadata" src="${item.audioUrl}" aria-label="${item.title}"></audio>
+                    </div>`;
+                }
                 return `
                 <div onclick="playBlueprint('${item.id}')" class="group py-6 px-3 sm:px-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-charcoal/50 transition-colors">
                     <div class="flex items-start sm:items-center gap-4">
