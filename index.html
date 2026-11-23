@@ -398,12 +398,20 @@
                     <div class="space-y-4">
                         <div class="flex flex-wrap items-center justify-between gap-3">
                             <span class="font-mono text-xs text-amber">resume // updated dossier</span>
-                            <a href="REED_JARED_RESUME_UPDATED.pdf" target="_blank" rel="noopener noreferrer" class="font-mono text-[11px] text-slate hover:text-amber transition-colors">
-                                open pdf ↗
-                            </a>
                         </div>
-                        <div class="w-full h-[720px] border hairline-border rounded overflow-hidden bg-obsidian">
-                            <iframe src="REED_JARED_RESUME_UPDATED.pdf" title="Jared Reed updated resume" class="w-full h-full"></iframe>
+                        <div class="resume-viewer w-full h-[720px] border hairline-border rounded overflow-hidden bg-black">
+                            <object
+                                data="REED_JARED_RESUME_UPDATED.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                                type="application/pdf"
+                                title="Jared Reed updated resume"
+                                class="w-full h-full bg-black"
+                            >
+                                <iframe
+                                    src="REED_JARED_RESUME_UPDATED.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                                    title="Jared Reed updated resume"
+                                    class="w-full h-full bg-black"
+                                ></iframe>
+                            </object>
                         </div>
                     </div>
 
