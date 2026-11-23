@@ -972,6 +972,7 @@
                 profile: 'sampled orchestral palette / sub-bass pulse',
                 duration: '04:15',
                 audioUrl: 'https://drive.google.com/uc?export=download&id=1886lnC9hi6bt2V0gF8LHmoh-yfuNFFM5',
+                credits: 'written by Chris Isaak · published by Chris Isaak Music Publishing / Warner Chappell · original master recording ℗ Reprise Records · cover master recording & cover performance: Jared Reed',
                 freqs: [130.81, 196.00, 246.94, 311.13] // C Minor Maj7
             },
             {
@@ -983,6 +984,7 @@
                 profile: 'precision audio editing / granular textures',
                 duration: '02:58',
                 audioUrl: 'https://drive.google.com/uc?export=download&id=1NdPsdDmzGbhN3J61m8N7HLqQsa6qjP2F',
+                credits: 'written by Bill Berry, Peter Buck, Mike Mills & Michael Stipe · published by Night Garden Music / Chappell Music · original recording ℗ R.E.M./Athens Ltd. / Warner Bros. Records · cover master recording & cover performance: Jared Reed',
                 freqs: [164.81, 246.94, 329.63, 369.99] // E Lydian
             },
             {
@@ -994,6 +996,7 @@
                 profile: 'intimate vocal narrative / unexpected modulation',
                 duration: '03:54',
                 audioUrl: 'https://drive.google.com/uc?export=download&id=1gtxigbWM9CD7Ndw3FEU_nN9pO5v2cNzS',
+                credits: 'written by Lindsey Buckingham, Mick Fleetwood, Christine McVie, John McVie & Stevie Nicks · original master ℗ 1977, 2004 Warner Records Inc. · remix & remix artist: Jared Reed',
                 freqs: [110.00, 164.81, 220.00, 277.18] // A cluster
             },
             {
@@ -1005,6 +1008,7 @@
                 profile: 'expansive cinematic instrumental / harmonic release',
                 duration: '05:10',
                 audioUrl: 'https://drive.google.com/uc?export=download&id=1nw4JUt8DorquFH9xRRznTCCPANH2K-l9',
+                credits: 'written by Caleb, Jared, Nathan & Matthew Followill · published by Coffee, Tea or Me Publishing, Followill Music, Martha Street Music & McFearless Music · original master ℗ & © 2008 RCA Records / Sony Music Entertainment · remix & remix artist: Jared Reed',
                 freqs: [174.61, 261.63, 329.63, 392.00] // F Major 9
             },
             {
@@ -1016,6 +1020,7 @@
                 profile: 'live acoustic performance / digital sound design',
                 duration: '03:19',
                 audioUrl: 'https://drive.google.com/uc?export=download&id=1zy7EgoCBIpiNyecisPgBan7ir7nkpqtI',
+                credits: 'written by FKA twigs (Tahliah Barnett) & Emile Haynie · original master ℗ Young Turks Recordings Ltd. · remix & remix artist: Jared Reed',
                 freqs: [123.47, 185.00, 220.00, 293.66] // B Phrygian
             }
         ];
@@ -1068,6 +1073,7 @@
                             </div>
                         </div>
                         <audio class="w-full max-w-4xl mx-auto" controls preload="metadata" src="${item.audioUrl}" aria-label="${item.title}"></audio>
+                        <p class="mt-2 text-[9px] leading-relaxed text-slate/70 font-mono">${item.credits || ''}</p>
                     </div>`;
                 }
                 return `
