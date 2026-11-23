@@ -959,6 +959,7 @@
                 role: 'composer & orchestrator',
                 profile: 'sampled orchestral palette / sub-bass pulse',
                 duration: '04:15',
+                audioUrl: 'https://drive.google.com/uc?export=download&id=1886lnC9hi6bt2V0gF8LHmoh-yfuNFFM5',
                 freqs: [130.81, 196.00, 246.94, 311.13] // C Minor Maj7
             },
             {
@@ -1007,6 +1008,7 @@
         let activeTrackId = null;
         let audioCtx = null;
         let activeOscillators = [];
+        let audioPlayer = null;
         let progressInterval = null;
         let progressValue = 0;
 
@@ -1083,6 +1085,10 @@
                 } catch (e) {}
             });
             activeOscillators = [];
+            if (audioPlayer) {
+                audioPlayer.pause();
+                audioPlayer = null;
+            }
             if (progressInterval) clearInterval(progressInterval);
         }
 
@@ -1105,6 +1111,35 @@
                 progressValue = 0;
                 updatePlayerUI(track);
                 renderPortfolio(currentFilter);
+                return;
+            }
+            if (track.audioUrl) {
+                progressValue = 0;
+                audioPlayer = new Audio(track.audioUrl);
+                audioPlayer.play().catch(() => {});
+                updatePlayerUI(track);
+                renderPortfolio(currentFilter);
+                progressInterval = setInterval(() => {
+                    if (!audioPlayer) return;
+                    const bar = document.getElementById('audio-progress');
+                    const timeEl = document.getElementById('audio-time');
+                    progressValue = audioPlayer.duration
+                        ? (audioPlayer.currentTime / audioPlayer.duration) * 100
+                        : 0;
+                    if (bar) bar.style.width = `${progressValue}%`;
+                    if (timeEl) {
+                        const sec = Math.floor(audioPlayer.currentTime);
+                        const m = String(Math.floor(sec / 60)).padStart(2, '0');
+                        const s = String(sec % 60).padStart(2, '0');
+                        timeEl.textContent = `${m}:${s}`;
+                    }
+                }, 350);
+                audioPlayer.addEventListener('ended', () => {
+                    stopAudioSynthesis();
+                    activeTrackId = null;
+                    updatePlayerUI(null);
+                    renderPortfolio(currentFilter);
+                });
                 return;
             }
 
