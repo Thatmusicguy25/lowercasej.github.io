@@ -475,13 +475,11 @@
 
             <!-- Track / Project Matrix -->
             <div id="portfolio-grid" class="divide-y hairline-border border-b hairline-border">
-                <div onclick="playBlueprint('bp-01')" class="group py-6 px-3 sm:px-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-charcoal/50 transition-colors">
-                    <div class="flex items-start sm:items-center gap-4">
-                        <span class="font-mono text-xs text-slate group-hover:text-emerald pt-1 sm:pt-0 transition-colors">
-                            01
-                        </span>
+                <div class="py-6 px-3 sm:px-4">
+                    <div class="flex items-start sm:items-center gap-4 mb-5">
+                        <span class="font-mono text-xs text-slate pt-1 sm:pt-0">01</span>
                         <div>
-                            <h3 class="font-display text-base sm:text-lg text-bone group-hover:text-white font-normal transition-colors">
+                            <h3 class="font-display text-base sm:text-lg text-bone font-normal">
                                 obsidian modal study i
                             </h3>
                             <p class="font-mono text-[11px] text-slate mt-0.5">
@@ -489,12 +487,8 @@
                             </p>
                         </div>
                     </div>
-
-                    <div class="flex items-center justify-between md:justify-end gap-6 pl-7 md:pl-0 font-mono text-xs">
-                        <span class="text-[11px] px-2.5 py-0.5 rounded border hairline-border text-slate">
-                            production
-                        </span>
-                        <span class="text-slate w-12 text-right">03:42</span>
+                    <div class="aspect-video w-full max-w-4xl mx-auto rounded border hairline-border overflow-hidden bg-obsidian">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/PclxFzFaehY" title="obsidian modal study i" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
                 
@@ -954,6 +948,7 @@
                 role: 'production & modal arrangement',
                 profile: 'acoustic foundation / experimental synthesis',
                 duration: '03:42',
+                embedUrl: 'https://www.youtube.com/embed/PclxFzFaehY',
                 freqs: [146.83, 220.00, 261.63, 329.63] // D Dorian voicing
             },
             {
@@ -1025,6 +1020,23 @@
 
             container.innerHTML = filtered.map(item => {
                 const isPlaying = activeTrackId === item.id;
+                if (item.embedUrl) {
+                    return `
+                    <div class="py-6 px-3 sm:px-4">
+                        <div class="flex items-start sm:items-center gap-4 mb-5">
+                            <span class="font-mono text-xs ${isPlaying ? 'text-emerald' : 'text-slate'} pt-1 sm:pt-0">01</span>
+                            <div>
+                                <h3 class="font-display text-base sm:text-lg ${isPlaying ? 'text-emerald' : 'text-bone'} font-normal">${item.title}</h3>
+                                <p class="font-mono text-[11px] text-slate mt-0.5">
+                                    ${item.role} &middot; <span class="text-slate/70">${item.profile}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="aspect-video w-full max-w-4xl mx-auto rounded border hairline-border overflow-hidden bg-obsidian">
+                            <iframe class="w-full h-full" src="${item.embedUrl}" title="${item.title}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                    </div>`;
+                }
                 return `
                 <div onclick="playBlueprint('${item.id}')" class="group py-6 px-3 sm:px-4 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-charcoal/50 transition-colors">
                     <div class="flex items-start sm:items-center gap-4">
@@ -1089,6 +1101,12 @@
 
             stopAudioSynthesis();
             activeTrackId = trackId;
+            if (track.embedUrl) {
+                progressValue = 0;
+                updatePlayerUI(track);
+                renderPortfolio(currentFilter);
+                return;
+            }
 
             // Initialize Web Audio warm ambient chord pad preview
             const AudioContextClass = window.AudioContext || window.webkitAudioContext;
